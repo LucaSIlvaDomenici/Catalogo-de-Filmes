@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="titulo"></title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const usuarioCorrente = sessionStorage.getItem('usuarioCorrente');
+
+    if (!usuarioCorrente || usuarioCorrente === '{}' || usuarioCorrente === 'null') {
+      window.location.href = 'login.html';
+    }
+  });
+</script>
+
+<body style="background-color: rgb(36, 36, 36);">
+
+
+  <!-- CABEÇALHO -->
+
+  <nav class="navbar navbar-expand-lg" style="background-color: #6f0000;">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold text-white " href="index.html"><img class="img-fluid" width="175" height="225"
+          src="assets/img/logotipo.png"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+
+        <ul class="navbar-nav fs-5">
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="categorias-genero.html">Categorias</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="favoritos.html">Favoritos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="cadastro_filmes.html">Editar</a>
+          </li>
+          <li class="nav-item">
+            <button id="btn_logout" class="text-white nav-link"
+              style="background-color: #6f0000; border: none;">Sair</button>
+          </li>
+        </ul>
+
+        <form id="form-pesquisa" class="d-flex ms-auto me-5" role="search">
+          <input id="campo-pesquisa" class="form-control me-2" type="search" list="sugestoes-filmes"
+            placeholder="Buscar filme..." aria-label="Search" style="width: 25rem;">
+          <datalist id="sugestoes-filmes"></datalist>
+          <button class="btn btn-outline-success text-white border-white" style="background-color: #8b0303;"
+            type="submit">
+            <i class="bi bi-search"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- BARRA-LATERAL + CORPO -->
+
+  <div class="row" style="margin-right: 0;">
+
+
+    <!-- BARRA-LATERAL -->
+
+    <div class="col-3 d-flex barra-lateral">
+      <div class="barra-lateral" style="background-color: #8b0303;">
+        <p class="fs-2 text-white fw-bold ps-4 pt-2">Novidades</p>
+
+        <div id="artigo">
+          <div class="pe-2 ps-4">
+            <div id="artigo">
+              <div class="card" style="width: 18rem; border: solid #8b0303; background-color: #8b0303;">
+                <div>
+                  <div style="position: relative; z-index: 1;">
+                    <a href="detalhes.html?id=1">
+                      <img height="430"
+                        src="https://upload.wikimedia.org/wikipedia/pt/5/57/Ainda_Estou_Aqui_2024_poster.jpg">
+                    </a>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title text-white">Ainda Estou Aqui</h5>
+                  <p class="card-text pb-3" style="width: 260px; color: #ffffffa6;">No início da década de 1970, o
+                    Brasil enfrenta o
+                    endurecimento da ditadura militar. No Rio de
+                    Janeiro, a família Paiva - Rubens, Eunice e seus cinco filhos - vive à beira da praia em uma
+                    casa de portas abertas para os amigos...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="artigo">
+          <div class="pt-5 pe-4 ps-4 pb-5">
+            <div id="artigo">
+              <div class="card" style="width: 18rem; border: solid #8b0303; background-color: #8b0303;">
+                <div style="position: relative; z-index: 1;">
+                  <a href="detalhes.html?id=2">
+                    <img width="287" height="430"
+                      src="https://m.media-amazon.com/images/S/pv-target-images/d40e2853996d20ff038e1a9bb5cad0c2bd75360b123a8daae467cd34c60c4e36.jpg">
+                  </a>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title text-white">A Substância</h5>
+                  <p class="card-text pb-3" style="width: 260px; color: #ffffffa6;">Elisabeth Sparkle, renomada por um
+                    programa de
+                    aeróbica, enfrenta um golpe devastador quando seu chefe a demite...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- CORPO-->
+
+    <div class="col-9 corpo">
+      <div class="corpo" id="tela">
+
+        <p class="fs-2 text-white pt-4 fw-bold">Informações Gerais</p>
+
+        <div class="d-flex flex-wrap flex-row">
+
+          <div class="pe-4 ps-5 pt-3">
+            <div class="card mb-3"
+              style="max-width: 1000px; background-color: rgb(36, 36, 36); border: 1px solid rgb(36, 36, 36);">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img id="imagem1" width="400" height="550" src="" alt="filme1" class="img-fluid rounded-start"
+                    style="border: solid;">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <div class="position-absolute top-0 start-0 translate-middle mt-2 ms-2 btn-favoritar"
+                      style="z-index: 2;">
+                      <button type="button" class="btn btn-secondary"><i class="bi bi-suit-heart"></i></button>
+                    </div>
+                    <p class="card-title text-white fs-2 fw-bold"><span id="filme"></span></p>
+                    <p class="card-text text-white">Data de lançamento: <span id="dataDeLancamento"
+                        style="color: rgba(242, 234, 234, 0.475);"></span></p>
+                    <p class="card-text text-white">Direção: <span id="direcao"
+                        style="color: rgba(242, 234, 234, 0.475);"></span></p>
+                    <p class="card-text text-white">Produção: <span id="producao"
+                        style="color: rgba(242, 234, 234, 0.475);"></span></p>
+                    <p class="card-text text-white">Duração: <span id="duracao"
+                        style="color: rgba(242, 234, 234, 0.475);"></span></p>
+                    <p class="card-text text-white pb-1">Sinopse:<br> <span id="sinopse"
+                        style="color: rgba(242, 234, 234, 0.475);"></span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="fs-2 text-white pt-4 fw-bold">Fotos do item</p>
+
+        <div class="d-flex flex-wrap flex-row justify-content-center">
+          <div class="p-2 pe-4 ps-5">
+            <div id="artigo">
+              <div class="card bg-dark-subtle" style="width: 100%; max-width: 30rem;">
+                <img id="imagem2" src="caminho-da-imagem1.jpg" alt="filme1" class="img-fluid rounded-start w-100">
+              </div>
+            </div>
+          </div>
+
+          <div class="p-2 pe-4 ps-5">
+            <div id="artigo">
+              <div class="card bg-dark-subtle" style="width: 100%; max-width: 30rem;">
+                <img id="imagem3" src="caminho-da-imagem2.jpg" alt="filme2" class="img-fluid rounded-start w-100">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="fs-2 text-white pt-4 fw-bold">Trailer</p>
+
+        <div class="ratio ratio-16x9">
+          <iframe id="trailer" class="ps-5 pt-3 pb-3" width="860" height="515" src="" title="YouTube video player"
+            style="max-width: 860px; max-height: 515px;" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  <!-- RODAPÉ -->
+
+  <footer class="navbar navbar-expand-lg" style="background-color: #6f0000;">
+    <div class="container-fluid justify-content-center text-white">
+      <span>&copy; 2025 Central dos Filmes - Todos os direitos reservados</span>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+
+  <script src="assets/js/app.js"></script>
+
+  <script>
+    let params = new URLSearchParams(location.search)
+    let id = params.get('id')
+
+    fetch('http://localhost:3000/filmes')
+      .then(res => res.json())
+      .then(data => {
+        if (id > data.length || id < 1) {
+          document.getElementById('tela').innerHTML = `<h1 class="text-white">Filme não encontrado</h1>`;
+          return;
+        }
+
+        console.log(data);
+        document.getElementById('imagem1').src = data[id - 1].imagem1
+        document.getElementById('filme').innerHTML = data[id - 1].titulo
+        document.getElementById('dataDeLancamento').innerHTML = data[id - 1].dataDeLancamento
+        document.getElementById('direcao').innerHTML = data[id - 1].direcao
+        document.getElementById('producao').innerHTML = data[id - 1].producao
+        document.getElementById('duracao').innerHTML = data[id - 1].duracao
+        document.getElementById('sinopse').innerHTML = data[id - 1].sinopse
+        document.getElementById('imagem2').src = data[id - 1].imagem2
+        document.getElementById('imagem3').src = data[id - 1].imagem3
+        document.getElementById('trailer').src = data[id - 1].trailer
+
+        const btnFavoritar = document.querySelector('.btn-favoritar button');
+        const icone = btnFavoritar.querySelector('i');
+        const filmeAtual = data[id - 1];
+
+        // Define o ícone com base no estado atual do favorito
+        if (filmeAtual.favorito) {
+          icone.classList.remove('bi-suit-heart');
+          icone.classList.add('bi-suit-heart-fill');
+        } else {
+          icone.classList.remove('bi-suit-heart-fill');
+          icone.classList.add('bi-suit-heart');
+        }
+
+        // Salva o ID no botão
+        btnFavoritar.setAttribute('data-id', filmeAtual.id);
+
+        // Evento de clique para alternar o favorito
+        btnFavoritar.addEventListener('click', function () {
+          const id = this.getAttribute('data-id');
+
+          fetch(`http://localhost:3000/filmes/${id}`)
+            .then(res => res.json())
+            .then(filme => {
+              const novoFavorito = !filme.favorito;
+
+              fetch(`http://localhost:3000/filmes/${id}`, {
+                method: 'PUT',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ ...filme, favorito: novoFavorito })
+              })
+                .then(res => res.json())
+                .then(() => {
+                  // Atualiza o ícone visualmente após salvar
+                  if (novoFavorito) {
+                    icone.classList.remove('bi-suit-heart');
+                    icone.classList.add('bi-suit-heart-fill');
+                  } else {
+                    icone.classList.remove('bi-suit-heart-fill');
+                    icone.classList.add('bi-suit-heart');
+                  }
+                });
+            });
+        });
+      })
+
+  </script>
+
+  <script src="assets/scripts/login.js"></script>
+
+  <script>
+    function initPage() {
+
+      // Associa a função de logout ao botão
+      document.getElementById('btn_logout').addEventListener('click', logoutUser);
+
+      // Informa o nome do usuário logado
+      document.getElementById('nomeUsuario').innerHTML = usuarioCorrente.nome;
+
+      // Lista os usuários 
+      exibeUsuarios();
+    }
+
+    // Associa ao evento de carga da página a função para verificar se o usuário está logado
+    window.addEventListener('load', initPage);
+  </script>
+
+  <!-- FORM-PESQUISA -->
+  <script>
+    document.getElementById('form-pesquisa').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const termo = document.getElementById('campo-pesquisa').value.trim().toLowerCase();
+
+      fetch('http://localhost:3000/filmes')
+        .then(res => res.json())
+        .then(data => {
+          const filmeEncontrado = data.find(filme =>
+            filme.titulo.toLowerCase().includes(termo)
+          );
+
+          if (filmeEncontrado) {
+            // Redireciona para a página de detalhes com o id correspondente
+            window.location.href = `detalhes.html?id=${filmeEncontrado.id}`;
+          } else {
+            alert('Filme não encontrado!');
+          }
+        });
+    });
+  </script>
+  <script>
+    let todosOsFilmes = [];
+
+    // Carrega os dados via AJAX quando a página for carregada
+    document.addEventListener("DOMContentLoaded", function () {
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", "http://localhost:3000/filmes", true);
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          todosOsFilmes = JSON.parse(xhr.responseText); // Armazena os filmes
+        }
+      };
+      xhr.send();
+
+      // Adiciona evento de input para filtrar sugestões
+      const campoPesquisa = document.getElementById("campo-pesquisa");
+      const datalist = document.getElementById("sugestoes-filmes");
+
+      campoPesquisa.addEventListener("input", function () {
+        const termo = campoPesquisa.value.toLowerCase();
+
+        // Limpa opções anteriores
+        datalist.innerHTML = "";
+
+        if (termo.length < 1) return; // só começa a sugerir após 1 caractere
+
+        // Filtra os filmes cujo título contém o texto digitado
+        const sugestoes = todosOsFilmes.filter(f =>
+          f.titulo.toLowerCase().includes(termo)
+        );
+
+        // Adiciona sugestões ao datalist
+        sugestoes.forEach(filme => {
+          const option = document.createElement("option");
+          option.value = filme.titulo;
+          datalist.appendChild(option);
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
